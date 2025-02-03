@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS - História e Membros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 3.8em;
+            font-family: 'Roboto Slab', serif;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 90px;
+        }
+
+        .story, .members, .albums, .best-songs, .comments-section {
+            text-align: justify;
+            font-size: 1.2em;
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 40px;
+        }
+
+        .member {
+            background: #222;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .member img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid #1e3c72;
+        }
+
+        .member h3 {
+            font-size: 2em;
+            color: #fff;
+        }
+
+        .best-songs .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .best-songs .song-item {
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .best-songs .song-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .best-songs .song-icon img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #1e3c72;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .best-songs .song-info {
+            padding: 15px;
+            background: #333;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .best-songs .song-info h3 {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .best-songs .song-info p {
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        .comments-section {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comments-section h2 {
+            font-size: 2.5em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .comment-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .comment-box input, .comment-box textarea {
+            padding: 15px;
+            border: 2px solid #1e3c72;
+            border-radius: 10px;
+            font-size: 1em;
+            color: #333;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .comment-box input:focus, .comment-box textarea:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        .comment-box button {
+            background-color: #1e3c72;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-box button:hover {
+            background-color: #ff7e5f;
+        }
+
+        .comments-list {
+            margin-top: 30px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .comments-list li {
+            background-color: #444;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comments-list li p {
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        .comments-list li h4 {
+            font-size: 1.2em;
+            color: #ff7e5f;
+            margin-bottom: 5px;
+        }
+
+        /* Link verde bonito */
+        .link {
+            text-decoration: none;
+            font-size: 24px;
+            color: #050705; /* Cor do link para verde */
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #0cd113; /* Cor da borda para verde */
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #3a943d; /* Cor da linha do efeito de hover */
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .link:hover {
+            color: rgb(0, 0, 0);
+            background-color: #3dc938; /* Cor de fundo ao passar o mouse */
+        }
+
+        .link:hover::before {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<a href="index.html.html" class="link" target="_blank">Conheça BTS</a>
+<body>
+
+    <header>
+        <h1>BTS - História e Membros</h1>
+    </header>
+    
+    <div class="container">
+        <section class="story">
+            <h2>História do BTS</h2>
+            <p>BTS (Bangtan Sonyeondan) é um grupo sul-coreano formado pela BigHit Entertainment em 2013. Composto por sete membros, eles rapidamente conquistaram o mundo com sua música e mensagens inspiradoras.</p>
+        </section>
+        
+        <section class="members">
+            <h2>Membros do BTS</h2>
+            <div class="member">
+                <img src="RM.jpg" alt="RM">
+                <h3>RM</h3>
+                <p>Líder do grupo e rapper principal.</p>
+            </div>
+            <div class="member">
+                <img src="jin.webp" alt="Jin">
+                <h3>Jin</h3>
+                <p>Vocalista e o mais velho do grupo.</p>
+            </div>
+            <div class="member">
+                <img src="SUGA.jpg" alt="Suga">
+                <h3>Suga</h3>
+                <p>Rapper e produtor do grupo.</p>
+            </div>
+            <div class="member">
+                <img src="J-HOPE.jpg" alt="J-Hope">
+                <h3>J-Hope</h3>
+                <p>Dançarino e rapper.</p>
+            </div>
+            <div class="member">
+                <img src="JIMIN.jpg" alt="Jimin">
+                <h3>Jimin</h3>
+                <p>Vocalista e dançarino principal.</p>
+            </div>
+            <div class="member">
+                <img src="V.jpg" alt="V">
+                <h3>V</h3>
+                <p>Vocalista e visual do grupo.</p>
+            </div>
+            <div class="member">
+                <img src="JUNGKOOK.jpg" alt="Jungkook">
+                <h3>Jungkook</h3>
+                <p>Vocalista principal e maknae.</p>
+            </div>
+        </section>
+
+        <footer>
+            
+        </footer>
+
+        <section class="comments-section">
+            <h2>Comentários</h2>
+            <div class="comment-box">
+                <input type="text" placeholder="Seu nome">
+                <textarea rows="4" placeholder="Seu comentário..."></textarea>
+                <button>Enviar Comentário</button>
+            </div>
+
+            <ul class="comments-list">
+                <li>
+                    <h4>A</h4>
+                    <p>Amo tanto o BTS! Suas músicas sempre me motivam. <3</p>
+                </li>
+                <li>
+                    <h4>B</h4>
+                    <p>BTS é o melhor grupo da atualidade, não há dúvida!</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
